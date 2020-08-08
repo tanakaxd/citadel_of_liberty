@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IApplyable
+interface IApplyable
 {
-    public bool Apply();
+    bool Apply();
 }

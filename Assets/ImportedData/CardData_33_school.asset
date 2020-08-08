@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f81b22907bba1748bb405b9bf0bcacb, type: 3}
+  m_Name: CardData_33_school
+  m_EditorClassIdentifier: 
+  ID: 33
+  cardName: "\u5B66\u6821"
+  codeName: school
+  type: 0
+  category: 3
+  discardsToBuild: 3
+  greenPerTurn: 0
+  bluePerTurn: 1
+  redPerTurn: 0
+  greenToActivate: 0
+  blueToActivate: 4
+  redToActivate: 0
+  anythingToActivate: 0
