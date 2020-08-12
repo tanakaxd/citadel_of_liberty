@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardView : MonoBehaviour
+public class CardView:MonoBehaviour
 {
     public Text cardName;
     public Text discardsToBuild;
@@ -16,4 +16,5 @@ public class CardView : MonoBehaviour
     public Text anythingToActivate;
     public Text description;
 
+    public Button activateButton;//TODO
 }

@@ -1,18 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 public class HandModel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ReactiveCollection<CardController> cards = new ReactiveCollection<CardController>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

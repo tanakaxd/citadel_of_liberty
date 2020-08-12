@@ -17,6 +17,11 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if(!GameManager.Instance.isDiscarding && !GameManager.Instance.isBuilding)
+        {
+            return;
+        }
+
         Debug.Log("begindrag");
         canvasGroup.blocksRaycasts = false;
         positionAfter = transform.position;
@@ -30,6 +35,10 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!GameManager.Instance.isDiscarding && !GameManager.Instance.isBuilding)
+        {
+            return;
+        }
         //Debug.Log("drag");
 
         transform.position = eventData.position;
@@ -37,6 +46,10 @@ public class CardMovement : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!GameManager.Instance.isDiscarding && !GameManager.Instance.isBuilding)
+        {
+            return;
+        }
         Debug.Log("enddrag");
         //pointerDragはドラッグされているオブジェクト
 

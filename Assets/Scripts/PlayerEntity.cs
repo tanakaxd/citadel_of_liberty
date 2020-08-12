@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-interface IApplyable
+public class PlayerEntity : MonoBehaviour
 {
-    bool Apply();
+    public HandController hands;
 }

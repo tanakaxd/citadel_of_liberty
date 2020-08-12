@@ -2,7 +2,7 @@
 using UnityEngine;
 using static CardData;
 
-public class CardModel : MonoBehaviour
+public class CardModel:MonoBehaviour
 {
     [HideInInspector] public IntReactiveProperty reactiveID;
     [HideInInspector] public StringReactiveProperty cardName;

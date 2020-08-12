@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CardData : ScriptableObject
 {
+    //CardModel
     public int ID;
     public string cardName;
     public string codeName;
@@ -18,6 +19,10 @@ public class CardData : ScriptableObject
     public int redToActivate;
     public int anythingToActivate;
     public string description;
+
+    //CardAbility
+    public ActivateCardEffect activateCardEffect;
+    public GenerateManaCardEffect generateManaCardEffect;
 
     public enum CardType
     {

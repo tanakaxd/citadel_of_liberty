@@ -7,14 +7,5 @@ using UnityEngine.UI;
 public class DeckView : MonoBehaviour
 {
     public Text deckCount;
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
 }

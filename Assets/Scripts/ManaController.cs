@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 public class ManaController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public ManaModel model;
+    public ManaView view;
     void Start()
     {
-        
+        model.greenMana.DistinctUntilChanged()
+            .SubscribeToText(view.greenMana);
+        model.blueMana.DistinctUntilChanged()
+            .SubscribeToText(view.blueMana);
+        model.redMana.DistinctUntilChanged()
+            .SubscribeToText(view.redMana);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

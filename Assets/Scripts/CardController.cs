@@ -5,26 +5,36 @@ public class CardController : MonoBehaviour
 {
     public CardModel model;
     public CardView view;
-    private CardData data;
+    public CardData data;
+    public CardAbility ability;
     public CardDataBase dataBase;
+
+    private BoardEntity board;
+    private PlayerEntity player;
+
+    private void Awake()
+    {
+        board = GameObject.Find("BoardEntity").GetComponent<BoardEntity>();
+        player = GameObject.Find("PlayerEntity").GetComponent<PlayerEntity>();
+    }
 
     private void Start()
     {
-        //model.reactiveID.Subscribe(view.)
         model.discardsToBuild.SubscribeToText(view.discardsToBuild);
         model.cardName.SubscribeToText(view.cardName);
         model.description.SubscribeToText(view.description);
+
+        //TODO
+        this.view.activateButton.OnClickAsObservable().Subscribe(_ => ability.Activate(this,player, board));
 
         //もともとDataを持っていたら。フィールド初期配置用
         if (data != null)
         {
             LoadData();
+            LoadLogic();
         }
     }
 
-    private void Update()
-    {
-    }
 
     public void LoadData()
     {
@@ -44,16 +54,22 @@ public class CardController : MonoBehaviour
         model.description.Value = data.description;
     }
 
-    public void UpdateView()
+    public void LoadLogic()
     {
-
+        this.ability.Load(this.data);
     }
+
 
     public void Init(int iD)
     {
         //IDからデータベースのデータを入手してロード
         this.data = dataBase.GetData(iD);
         LoadData();
-        //UpdateView();
+        LoadLogic();
+    }
+
+    public void GenerateMana(BoardEntity board)
+    {
+        this.ability.generateManaCardEffect.GenerateMana(this,board);
     }
 }

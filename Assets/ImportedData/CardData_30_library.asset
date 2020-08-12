@@ -25,3 +25,7 @@ MonoBehaviour:
   blueToActivate: 1
   redToActivate: 0
   anythingToActivate: 0
+  description: 
+  activateCardEffect: {fileID: 0}
+  generateManaCardEffect: {fileID: 11400000, guid: 941cfe94484d5954eb1b01ce72367daf,
+    type: 2}

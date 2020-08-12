@@ -5,16 +5,21 @@ using UnityEngine;
 
 public class DeckController : MonoBehaviour
 {
+    //MVC
     public DeckModel model;
     public DeckView view;
+
     public TextAsset csvFile;
-    public HandController hand;
-    private ReactiveCollection<CardController> cards = new ReactiveCollection<CardController>();
     public GameObject cardPrefab;
+
+    //other Controllers
+    public HandController hand;
+
     void Start()
     {
         //デッキの枚数をviewに結び付ける
-        cards.ObserveCountChanged().DistinctUntilChanged().SubscribeToText(view.deckCount);
+        model.cards.ObserveCountChanged().DistinctUntilChanged().SubscribeToText(view.deckCount);
+
         Init();
     }
 
@@ -37,7 +42,7 @@ public class DeckController : MonoBehaviour
                 CardController card = cardObject.GetComponent<CardController>();
                 card.Init(ID);
                 card.transform.SetParent(this.transform);
-                cards.Add(card);
+                model.cards.Add(card);
             }
 
         }
@@ -47,9 +52,13 @@ public class DeckController : MonoBehaviour
     {
         for (int i = 0; i < amounts; i++)
         {
-            CardController card = cards[Random.Range(0,cards.Count)];
-            cards.Remove(card);
+            CardController card = model.cards[Random.Range(0,model.cards.Count)];
+            model.cards.Remove(card);
             hand.AddCard(card);
+            if (model.cards.Count <= 0)
+            {
+                //TODO refresh
+            }
         }
     }
 

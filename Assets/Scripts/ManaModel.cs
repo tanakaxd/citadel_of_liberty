@@ -1,18 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
 public class ManaModel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public IntReactiveProperty greenMana = new IntReactiveProperty(0);
+    public IntReactiveProperty blueMana = new IntReactiveProperty(0);
+    public IntReactiveProperty redMana = new IntReactiveProperty(0);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

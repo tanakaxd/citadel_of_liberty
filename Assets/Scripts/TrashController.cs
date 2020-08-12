@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
 
 public class TrashController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public TrashModel model;
+    public TrashView view;
     void Start()
     {
-        
+        model.cards.ObserveCountChanged().DistinctUntilChanged().SubscribeToText(view.trashCounter);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddCard(CardController card)
     {
-        
+        model.cards.Add(card);
     }
+
 }
