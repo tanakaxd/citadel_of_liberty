@@ -12,6 +12,7 @@ public class SlotController : MonoBehaviour
     public CardController building;
 
     public TrashController trash;
+    public HandController hand;
 
     private void Awake()
     {
@@ -23,8 +24,8 @@ public class SlotController : MonoBehaviour
 
         gameObject.AddComponent<ObservableEventTrigger>().OnDropAsObservable()
             .Where(_=>GameManager.Instance.isBuilding)
-            .Do(_=>Debug.Log("OnDropAsObservable Onnext"))
-            .Do(e=>Debug.Log(e.pointerDrag))
+            //.Do(_ => Debug.Log("OnDropAsObservable Onnext"))
+            //.Do(e => Debug.Log(e.pointerDrag))
             .Subscribe(e => OnDrop(e));
     }
 
@@ -35,11 +36,17 @@ public class SlotController : MonoBehaviour
         CardBuilt card = eventData.pointerDrag.GetComponent<CardBuilt>();
         if (card != null)
         {
+            //既存の建物を破壊
+            //DemolishBuilding();
+
             card.parentBeforeDrag = this.transform;
             card.positionAfter = this.transform.position;
             this.building = card.GetComponent<CardController>();
+            hand.Build(building);
             GameManager.Instance.isBuilding = false;
             Debug.Log("GetBuilding: " + this.building);
+            Debug.Log("Hnadcount: " + hand.model.cards.Count);
+
         }
     }
 
@@ -52,7 +59,7 @@ public class SlotController : MonoBehaviour
 
     public void DemolishBuilding()
     {
-        trash.AddCard(this.building);
+        //trash.AddCard(this.building);
         this.building = null;
     }
 

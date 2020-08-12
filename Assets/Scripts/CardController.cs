@@ -6,6 +6,7 @@ public class CardController : MonoBehaviour
     public CardModel model;
     public CardView view;
     public CardData data;
+    public CardBuilt built;
     public CardAbility ability;
     public CardDataBase dataBase;
 
@@ -72,4 +73,6 @@ public class CardController : MonoBehaviour
     {
         this.ability.generateManaCardEffect.GenerateMana(this,board);
     }
+
+
 }

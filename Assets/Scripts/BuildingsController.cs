@@ -22,4 +22,9 @@ public class BuildingsController : MonoBehaviour
     {
         slots.ForEach(s => { if (s.building != null) s.building.GenerateMana(board); });
     }
+
+    public void BlocksRaycast(bool blocks)
+    {
+        slots.ForEach(s => { if (s.building != null) s.building.built.BlocksRaycast(blocks); });
+    }
 }

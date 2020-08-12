@@ -6,5 +6,6 @@ using UnityEngine.UI;
 public class HandView : MonoBehaviour
 {
     public RectTransform handsTransform;
+    public Text counter;
 
 }

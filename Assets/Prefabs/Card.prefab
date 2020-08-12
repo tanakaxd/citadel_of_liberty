@@ -426,6 +426,7 @@ MonoBehaviour:
   model: {fileID: -301952110943213615}
   view: {fileID: 6633720120587316914}
   data: {fileID: 0}
+  built: {fileID: -7540541477672622471}
   ability: {fileID: -3148075122535753672}
   dataBase: {fileID: 11400000, guid: f7970020385ce9540a99681b5cb1a93a, type: 2}
 --- !u!114 &-301952110943213615
