@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 161f2ef699c84bb4eb45b2216719a67a, type: 3}
   m_Name: PlayCardEffectGreen
   m_EditorClassIdentifier: 
-  greenMana: 0
+  greenMana: 1
   blueMana: 0
   redMana: 0

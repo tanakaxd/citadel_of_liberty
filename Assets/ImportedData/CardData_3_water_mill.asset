@@ -27,5 +27,6 @@ MonoBehaviour:
   anythingToActivate: 4
   description: 
   activateCardEffect: {fileID: 0}
-  generateManaCardEffect: {fileID: 11400000, guid: 941cfe94484d5954eb1b01ce72367daf,
+  generateSpellCardEffect: {fileID: 11400000, guid: 8a4afc158d7bdfd4689ed7bb098bfcd2,
     type: 2}
+  playCardEffect: {fileID: 0}

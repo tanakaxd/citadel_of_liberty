@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   greenMana: 0
   blueMana: 0
-  redMana: 0
+  redMana: 1

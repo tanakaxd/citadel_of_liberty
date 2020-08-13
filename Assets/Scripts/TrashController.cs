@@ -47,4 +47,11 @@ public class TrashController : MonoBehaviour
         model.cards.Add(card);
     }
 
+    public void AddWholeCard(CardController card)
+    {
+        model.cards.Add(card);
+        card.transform.SetParent(transform,false);
+        card.transform.position = transform.position + hiddenOffset;
+    }
+
 }

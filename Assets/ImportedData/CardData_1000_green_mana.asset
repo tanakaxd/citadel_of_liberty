@@ -28,4 +28,4 @@ MonoBehaviour:
   description: 
   activateCardEffect: {fileID: 0}
   generateSpellCardEffect: {fileID: 0}
-  playCardEffect: {fileID: 0}
+  playCardEffect: {fileID: 11400000, guid: 0eef27a4d1295544aa8e7d6ef8ebfaff, type: 2}

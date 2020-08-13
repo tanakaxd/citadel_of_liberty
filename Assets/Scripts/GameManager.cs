@@ -51,7 +51,6 @@ public TopPanelController TopPanelController { get; private set; }
 
 
         //建物のパッシブ
-        //GenerateMana(board);
         GenerateSpell();
 
         yield return new WaitForSeconds(1);
@@ -60,11 +59,29 @@ public TopPanelController TopPanelController { get; private set; }
         Draw();
     }
 
-    //public void GenerateMana(BoardEntity board)
-    //{
-    //    Debug.Log("GenerateMana");
-    //    board.buildings.GenerateMana(board);
-    //}
+    public void StartEndTurn()
+    {
+        StartCoroutine(EndTurnCoroutine());
+    }
+
+    public IEnumerator EndTurnCoroutine()
+    {
+        //食料消費
+        gameModel.food.Value -= gameModel.population.Count;
+        yield return new WaitForSeconds(1);
+
+        //金銭消費
+        //gameModel.money.Value-=
+        yield return new WaitForSeconds(1);
+
+        //手札を捨てる
+        player.hands.DiscardAll();
+        yield return new WaitForSeconds(1);
+
+        //次のターン開始
+        StartCoroutine(BeginTurn());
+
+    }
 
     public void GenerateSpell()
     {

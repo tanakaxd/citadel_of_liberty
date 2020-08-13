@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8d8e5c911cd1d4c8c31e557c1343e6, type: 3}
   m_Name: CsvImporter
   m_EditorClassIdentifier: 
-  csvFile: {fileID: 4900000, guid: 73f16570021b2f4419258f667a84efc1, type: 3}
+  csvFile: {fileID: 4900000, guid: ad759a94cf22e84488f21cf15964f7a9, type: 3}

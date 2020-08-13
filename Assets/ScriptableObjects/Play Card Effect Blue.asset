@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Play Card Effect Blue
   m_EditorClassIdentifier: 
   greenMana: 0
-  blueMana: 0
+  blueMana: 1
   redMana: 0

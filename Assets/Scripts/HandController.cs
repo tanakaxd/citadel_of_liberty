@@ -68,6 +68,10 @@ public class HandController : MonoBehaviour
 
     public void DiscardAll()
     {
-
+        foreach (var card in model.cards)
+        {
+            trash.AddWholeCard(card);
+        }
+        model.cards.Clear();
     }
 }
