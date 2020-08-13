@@ -5,12 +5,14 @@ using UnityEngine;
 public class CardAbility : MonoBehaviour
 {
     public ActivateCardEffect activateCardEffect;
-    public GenerateManaCardEffect generateManaCardEffect;
+    public GenerateSpellCardEffect generateSpellCardEffect;
+    public PlayCardEffect playCardEffect;
 
     public void Load(CardData data)
     {
         this.activateCardEffect = data.activateCardEffect;
-        this.generateManaCardEffect = data.generateManaCardEffect;
+        this.generateSpellCardEffect = data.generateSpellCardEffect;
+        this.playCardEffect = data.playCardEffect;
     }
 
     public bool Activate(CardController card, PlayerEntity player, BoardEntity board)
@@ -45,13 +47,8 @@ public class CardAbility : MonoBehaviour
 
     }
 
-    public void GenerateMana(CardController card, BoardEntity board)
-    {
-        generateManaCardEffect.GenerateMana(card, board);
-    }
-
     public void GenerateSpell(CardController card, BoardEntity board)
     {
-        generateManaCardEffect.GenerateSpell(card, board);
+        generateSpellCardEffect.GenerateSpell(card, board);
     }
 }

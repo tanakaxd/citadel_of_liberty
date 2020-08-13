@@ -11,12 +11,12 @@ public class TrashController : MonoBehaviour
 
     public HandController hand;
 
+    private Vector3 hiddenOffset = new Vector3(1000, 0, 0);
     void Start()
     {
         model.cards.ObserveCountChanged()
             .DistinctUntilChanged()
             .SubscribeToText(view.trashCounter);
-
       
         var trigger = gameObject.AddComponent<ObservableEventTrigger>();
 
@@ -26,14 +26,13 @@ public class TrashController : MonoBehaviour
             {
                 Debug.Log("Trash OnDrop");
 
-                //TODO CardBuiltではなく専用のクラスを作る
-                CardBuilt card = e.pointerDrag.GetComponent<CardBuilt>();
+                CardMovement card = e.pointerDrag.GetComponent<CardMovement>();
                 if (card != null)
                 {
                     //TODO この処理をhand側で行う？　例えばDiscardメソッドで
                     //hand.Discard(card,this)
-                    card.parentBeforeDrag = this.transform;
-                    card.positionAfter = this.transform.position;
+                    card.parentAfterDrag = this.transform;
+                    card.positionAfterDrag = this.transform.position + hiddenOffset;
                     CardController discardedCard = card.GetComponent<CardController>();
                     model.cards.Add(discardedCard);
                     hand.DiscardForCosts(discardedCard);

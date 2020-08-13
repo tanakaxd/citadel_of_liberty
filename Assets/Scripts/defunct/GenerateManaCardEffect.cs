@@ -10,8 +10,5 @@ public class GenerateManaCardEffect : ScriptableObject
         board.mana.model.redMana.Value += card.model.redPerTurn.Value;
     }
 
-    public void GenerateSpell(CardController card, BoardEntity board)
-    {
-        board.deck.AddSpellCard(card);
-    }
+
 }  

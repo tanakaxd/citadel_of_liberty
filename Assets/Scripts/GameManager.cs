@@ -60,11 +60,11 @@ public TopPanelController TopPanelController { get; private set; }
         Draw();
     }
 
-    public void GenerateMana(BoardEntity board)
-    {
-        Debug.Log("GenerateMana");
-        board.buildings.GenerateMana(board);
-    }
+    //public void GenerateMana(BoardEntity board)
+    //{
+    //    Debug.Log("GenerateMana");
+    //    board.buildings.GenerateMana(board);
+    //}
 
     public void GenerateSpell()
     {

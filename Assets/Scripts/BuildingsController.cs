@@ -18,11 +18,6 @@ public class BuildingsController : MonoBehaviour
     {
     }
 
-    public void GenerateMana(BoardEntity board)
-    {
-        slots.ForEach(s => { if (s.building != null) s.building.GenerateMana(board); });
-    }
-
     public void GenerateSpell()
     {
         slots.ForEach(s => { if (s.building != null) s.building.GenerateSpell(); });
@@ -30,6 +25,6 @@ public class BuildingsController : MonoBehaviour
 
     public void BlocksRaycast(bool blocks)
     {
-        slots.ForEach(s => { if (s.building != null) s.building.built.BlocksRaycast(blocks); });
+        slots.ForEach(s => { if (s.building != null) s.building.movement.BlocksRaycast(blocks); });
     }
 }

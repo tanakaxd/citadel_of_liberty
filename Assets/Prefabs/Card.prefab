@@ -363,11 +363,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2831484382679351030}
   - component: {fileID: -2055993000921228053}
-  - component: {fileID: -887958642064820768}
+  - component: {fileID: 6009398271839758966}
   - component: {fileID: -301952110943213615}
   - component: {fileID: 6633720120587316914}
   - component: {fileID: -3148075122535753672}
-  - component: {fileID: -7540541477672622471}
+  - component: {fileID: -7929029687331629777}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -411,7 +411,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &-887958642064820768
+--- !u!114 &6009398271839758966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -420,15 +420,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1898205154251862476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73b384845effdb541b01ce496ed05d0b, type: 3}
+  m_Script: {fileID: 11500000, guid: cda53e4e0fc481c4e930287cca50f979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: -301952110943213615}
   view: {fileID: 6633720120587316914}
   data: {fileID: 0}
-  built: {fileID: -7540541477672622471}
   ability: {fileID: -3148075122535753672}
   dataBase: {fileID: 11400000, guid: f7970020385ce9540a99681b5cb1a93a, type: 2}
+  movement: {fileID: -7929029687331629777}
 --- !u!114 &-301952110943213615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,8 +503,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activateCardEffect: {fileID: 0}
-  generateManaCardEffect: {fileID: 0}
---- !u!114 &-7540541477672622471
+  generateSpellCardEffect: {fileID: 0}
+  playCardEffect: {fileID: 0}
+--- !u!114 &-7929029687331629777
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -513,7 +514,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1898205154251862476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c426003cffb0e34f850daa44f11c606, type: 3}
+  m_Script: {fileID: 11500000, guid: 10a599026ab592842b2f17bb4c57c084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentBeforeDrag: {fileID: 0}

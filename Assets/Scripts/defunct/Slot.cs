@@ -12,8 +12,8 @@ public class Slot : MonoBehaviour, IDropHandler
         CardMovement card = eventData.pointerDrag.GetComponent<CardMovement>();
         if (card != null)
         {
-            card.parentBeforeDrag=this.transform;
-            card.positionAfter = this.transform.position;
+            card.parentAfterDrag=this.transform;
+            card.positionAfterDrag = this.transform.position;
         }
 
     }

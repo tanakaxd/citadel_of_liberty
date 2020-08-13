@@ -11,6 +11,7 @@ public class DeckController : MonoBehaviour
 
     public TextAsset csvFile;
     public GameObject cardPrefab;
+    public GameObject spellPrefab;
 
     //other Controllers
     public HandController hand;
@@ -74,7 +75,7 @@ public class DeckController : MonoBehaviour
     {
         for (int i = 0; i < generatingCard.model.greenPerTurn.Value; i++)
         {
-            GameObject cardObject = Instantiate(cardPrefab) as GameObject;
+            GameObject cardObject = Instantiate(spellPrefab) as GameObject;
             CardController generatedCard = cardObject.GetComponent<CardController>();
             generatedCard.Init(1000);
             generatedCard.transform.SetParent(this.transform);
@@ -82,7 +83,7 @@ public class DeckController : MonoBehaviour
         }
         for (int i = 0; i < generatingCard.model.bluePerTurn.Value; i++)
         {
-            GameObject cardObject = Instantiate(cardPrefab) as GameObject;
+            GameObject cardObject = Instantiate(spellPrefab) as GameObject;
             CardController generatedCard = cardObject.GetComponent<CardController>();
             generatedCard.Init(1001);
             generatedCard.transform.SetParent(this.transform);
@@ -90,7 +91,7 @@ public class DeckController : MonoBehaviour
         }
         for (int i = 0; i < generatingCard.model.redPerTurn.Value; i++)
         {
-            GameObject cardObject = Instantiate(cardPrefab) as GameObject;
+            GameObject cardObject = Instantiate(spellPrefab) as GameObject;
             CardController generatedCard = cardObject.GetComponent<CardController>();
             generatedCard.Init(1002);
             generatedCard.transform.SetParent(this.transform);

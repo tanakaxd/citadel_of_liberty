@@ -22,15 +22,16 @@ public class CardData : ScriptableObject
 
     //CardAbility
     public ActivateCardEffect activateCardEffect;
-    public GenerateManaCardEffect generateManaCardEffect;
+    public GenerateSpellCardEffect generateSpellCardEffect;
+    public PlayCardEffect playCardEffect;
 
     public enum CardType
     {
-        BUILDING,SPELL
+        BUILDING,CONSUMABLE
     }
 
     public enum CardCategory
     {
-        AGRICULTURE,CONSTRUCTION,GATHERING,STUDY,COMMERCIAL,RELIGION,AGORA
+        AGRICULTURE,CONSTRUCTION,GATHERING,STUDY,COMMERCIAL,RELIGION,AGORA,SPELL
     }
 }

@@ -1,61 +1,36 @@
 ﻿using UnityEngine;
 using UniRx;
 
-public class CardController : MonoBehaviour
+public abstract class CardController : MonoBehaviour
 {
     public CardModel model;
     public CardView view;
     public CardData data;
-    public CardBuilt built;
     public CardAbility ability;
     public CardDataBase dataBase;
+    public CardMovement movement;
 
-    private BoardEntity board;
-    private PlayerEntity player;
+    protected BoardEntity board;
+    protected PlayerEntity player;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         board = GameObject.Find("BoardEntity").GetComponent<BoardEntity>();
         player = GameObject.Find("PlayerEntity").GetComponent<PlayerEntity>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         model.discardsToBuild.SubscribeToText(view.discardsToBuild);
         model.cardName.SubscribeToText(view.cardName);
         model.description.SubscribeToText(view.description);
-
-        //TODO
-        this.view.activateButton.OnClickAsObservable().Subscribe(_ => ability.Activate(this,player, board));
-
-        //もともとDataを持っていたら。フィールド初期配置用
-        if (data != null)
-        {
-            LoadData();
-            LoadLogic();
-        }
     }
 
 
-    public void LoadData()
-    {
-        model.reactiveID.Value = data.ID;
-        model.cardName.Value = data.cardName;
-        model.codeName.Value = data.codeName;
-        model.type = data.type;
-        model.category = data.category;
-        model.discardsToBuild.Value = data.discardsToBuild;
-        model.greenPerTurn.Value = data.greenPerTurn;
-        model.bluePerTurn.Value = data.bluePerTurn;
-        model.redPerTurn.Value = data.redPerTurn;
-        model.greenToActivate.Value = data.greenToActivate;
-        model.blueToActivate.Value = data.blueToActivate;
-        model.redToActivate.Value = data.redToActivate;
-        model.anythingToActivate.Value = data.anythingToActivate;
-        model.description.Value = data.description;
-    }
+    public abstract void LoadData();
+    
 
-    public void LoadLogic()
+    public virtual void LoadLogic()
     {
         this.ability.Load(this.data);
     }
@@ -69,15 +44,11 @@ public class CardController : MonoBehaviour
         LoadLogic();
     }
 
-    public void GenerateMana(BoardEntity board)
+    public void Play()//手札からプレイしたとき,Handから呼び出される
     {
-        this.ability.generateManaCardEffect.GenerateMana(this,board);
+        ability.playCardEffect.GenerateMana(this, board);
     }
 
-    public void GenerateSpell()
-    {
-        this.ability.generateManaCardEffect.GenerateSpell(this, board);
-    }
 
 
 }

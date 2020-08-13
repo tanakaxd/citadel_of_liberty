@@ -40,7 +40,7 @@ public class CSVImpoterEditor : Editor
             int column = 0;
 
             // 先頭の列が空であればその行は読み込まない
-            if (elementsInLine[column] == "")
+            if (elementsInLine[column] == ""|| int.Parse(elementsInLine[column])<1000)
             {
                 continue;
             }
@@ -66,8 +66,8 @@ public class CSVImpoterEditor : Editor
                 case "BUILDING":
                     cardModelData.type = CardType.BUILDING;
                     break;
-                case "SPELL":
-                    cardModelData.type = CardType.SPELL;
+                case "CONSUMABLE":
+                    cardModelData.type = CardType.CONSUMABLE;
                     break;
                 default:
                     Debug.LogError("invalid card type");
@@ -97,6 +97,9 @@ public class CSVImpoterEditor : Editor
                     break;
                 case "AGORA":
                     cardModelData.category = CardCategory.AGORA;
+                    break;
+                case "SPELL":
+                    cardModelData.category = CardCategory.SPELL;
                     break;
                 default:
                     Debug.LogError("invalid card category");

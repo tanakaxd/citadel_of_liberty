@@ -48,15 +48,16 @@ public class HandController : MonoBehaviour
 
     }
 
-    public void Build(CardController card)
+    public void Build(CardController card)//手札から建設したとき、ボード側から呼び出される
     {
         cardToBuild = card;
         model.cards.Remove(card);
     }
 
-    public void Play()
+    public void Play(CardController card)//手札からプレイしたとき、ボード側から呼び出される
     {
-
+        card.Play();
+        model.cards.Remove(card);
     }
 
     public void DiscardForCosts(CardController card)

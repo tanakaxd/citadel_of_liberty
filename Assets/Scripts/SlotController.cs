@@ -9,7 +9,8 @@ using UnityEngine.EventSystems;
 public class SlotController : MonoBehaviour
 {
     public List<SlotController> linkedSlots = new List<SlotController>();
-    public CardController building;
+    public CardBuildingController building;
+
 
     public TrashController trash;
     public HandController hand;
@@ -33,15 +34,15 @@ public class SlotController : MonoBehaviour
     {
         Debug.Log("OnDrop");
 
-        CardBuilt card = eventData.pointerDrag.GetComponent<CardBuilt>();
+        CardMovement card = eventData.pointerDrag.GetComponent<CardMovement>();
         if (card != null)
         {
             //既存の建物を破壊
             //DemolishBuilding();
 
-            card.parentBeforeDrag = this.transform;
-            card.positionAfter = this.transform.position;
-            this.building = card.GetComponent<CardController>();
+            card.parentAfterDrag = this.transform;
+            card.positionAfterDrag = this.transform.position;
+            this.building = card.GetComponent<CardBuildingController>();
             hand.Build(building);
             GameManager.Instance.isBuilding = false;
             Debug.Log("GetBuilding: " + this.building);
@@ -53,7 +54,7 @@ public class SlotController : MonoBehaviour
     
     private void GetBuilding()//初期化用
     {
-        this.building = transform.GetComponentInChildren<CardController>();
+        this.building = transform.GetComponentInChildren<CardBuildingController>();
         Debug.Log("GetBuilding: " + this.building);
     }
 
