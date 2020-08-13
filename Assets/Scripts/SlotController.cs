@@ -45,7 +45,7 @@ public class SlotController : MonoBehaviour
             hand.Build(building);
             GameManager.Instance.isBuilding = false;
             Debug.Log("GetBuilding: " + this.building);
-            Debug.Log("Hnadcount: " + hand.model.cards.Count);
+            Debug.Log("Handcount: " + hand.model.cards.Count);
 
         }
     }
@@ -60,6 +60,7 @@ public class SlotController : MonoBehaviour
     public void DemolishBuilding()
     {
         //trash.AddCard(this.building);
+        Destroy(this.building.gameObject);
         this.building = null;
     }
 

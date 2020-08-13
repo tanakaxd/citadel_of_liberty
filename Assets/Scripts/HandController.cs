@@ -9,6 +9,9 @@ public class HandController : MonoBehaviour
     public HandView view;
     public HandModel model;
 
+    public int discardCounter = 0;
+    private CardController cardToBuild;
+
     public TrashController trash;
 
     void Start()
@@ -28,17 +31,41 @@ public class HandController : MonoBehaviour
         card.transform.SetParent(transform,false);
     }
 
-    public void Discard()
+    //ScriptableObjectではStartCoroutineが使えないのでラッパーメソッド
+    public void StartDiscard()
     {
+        StartCoroutine(DiscardCoroutine());
+    }
+
+    public IEnumerator DiscardCoroutine()
+    {
+        //コスト分のカードが捨てられるまで
+        yield return new WaitUntil(()=>this.discardCounter==cardToBuild.model.discardsToBuild.Value);
+
+        this.cardToBuild = null;
+        this.discardCounter = 0;
+        GameManager.Instance.isDiscarding = false;
 
     }
 
     public void Build(CardController card)
     {
-        Debug.Log(model.cards.Remove(card));
+        cardToBuild = card;
+        model.cards.Remove(card);
     }
 
     public void Play()
+    {
+
+    }
+
+    public void DiscardForCosts(CardController card)
+    {
+        model.cards.Remove(card);
+        this.discardCounter++;
+    }
+
+    public void DiscardAll()
     {
 
     }

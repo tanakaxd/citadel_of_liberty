@@ -74,5 +74,10 @@ public class CardController : MonoBehaviour
         this.ability.generateManaCardEffect.GenerateMana(this,board);
     }
 
+    public void GenerateSpell()
+    {
+        this.ability.generateManaCardEffect.GenerateSpell(this, board);
+    }
+
 
 }

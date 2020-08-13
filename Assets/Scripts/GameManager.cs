@@ -25,6 +25,7 @@ public TopPanelController TopPanelController { get; private set; }
     private PlayerEntity player;
 
     //State
+    public bool isChoicePrompting = false;//プレイヤーの選択を待っている状態。他の入力を禁ずる
     public bool isDiscarding = false;
     public bool isBuilding = false;
 
@@ -50,7 +51,8 @@ public TopPanelController TopPanelController { get; private set; }
 
 
         //建物のパッシブ
-        GenerateMana(board);
+        //GenerateMana(board);
+        GenerateSpell();
 
         yield return new WaitForSeconds(1);
 
@@ -62,6 +64,12 @@ public TopPanelController TopPanelController { get; private set; }
     {
         Debug.Log("GenerateMana");
         board.buildings.GenerateMana(board);
+    }
+
+    public void GenerateSpell()
+    {
+        Debug.Log("GenerateSpell");
+        board.buildings.GenerateSpell();
     }
     public void Draw()
     {

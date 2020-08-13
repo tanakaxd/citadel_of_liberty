@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ActivateCardEffect_0_potato_field")]
 public class Activate_0_potato_field : ActivateCardEffect
 {
-    public override bool DoActivate(CardController card, PlayerEntity player, BoardEntity board)
+    public override IEnumerator Activate(CardController card, PlayerEntity player, BoardEntity board)
     {
         //コスト消費
         //TODO consume anything to activate
@@ -16,7 +16,7 @@ public class Activate_0_potato_field : ActivateCardEffect
 
         Debug.Log("ActivateCardEffect_0_potato_field success");
 
-        return true;
+        yield break;
     }
 
 }

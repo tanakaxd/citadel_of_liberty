@@ -29,8 +29,10 @@ public class DeckController : MonoBehaviour
 
         foreach (string textLine in textLines)
         {
+
             string[] cardData = textLine.Split(',');
 
+            if (cardData[0].Equals("1000")) break;
             if (cardData[0] == "") continue;
 
             int ID = int.Parse(cardData[0]);
@@ -59,6 +61,40 @@ public class DeckController : MonoBehaviour
             {
                 //TODO refresh
             }
+        }
+    }
+
+    public void AddCard(CardController card)
+    {
+        model.cards.Add(card);
+
+    }
+
+    public void AddSpellCard(CardController generatingCard)
+    {
+        for (int i = 0; i < generatingCard.model.greenPerTurn.Value; i++)
+        {
+            GameObject cardObject = Instantiate(cardPrefab) as GameObject;
+            CardController generatedCard = cardObject.GetComponent<CardController>();
+            generatedCard.Init(1000);
+            generatedCard.transform.SetParent(this.transform);
+            model.cards.Add(generatedCard);
+        }
+        for (int i = 0; i < generatingCard.model.bluePerTurn.Value; i++)
+        {
+            GameObject cardObject = Instantiate(cardPrefab) as GameObject;
+            CardController generatedCard = cardObject.GetComponent<CardController>();
+            generatedCard.Init(1001);
+            generatedCard.transform.SetParent(this.transform);
+            model.cards.Add(generatedCard);
+        }
+        for (int i = 0; i < generatingCard.model.redPerTurn.Value; i++)
+        {
+            GameObject cardObject = Instantiate(cardPrefab) as GameObject;
+            CardController generatedCard = cardObject.GetComponent<CardController>();
+            generatedCard.Init(1002);
+            generatedCard.transform.SetParent(this.transform);
+            model.cards.Add(generatedCard);
         }
     }
 

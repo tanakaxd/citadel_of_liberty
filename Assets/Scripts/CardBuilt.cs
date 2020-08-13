@@ -49,6 +49,7 @@ public class CardBuilt : MonoBehaviour
     public void OnBeginDrag(PointerEventData eventData)
     {
         //自分ではなくボード上のカードの状態を変える
+        //この必要があるのが建てる時のみなので、専用のクラスを作っているが一応他のと兼用できる
         board.buildings.BlocksRaycast(false);
 
         canvasGroup.blocksRaycasts = false;
