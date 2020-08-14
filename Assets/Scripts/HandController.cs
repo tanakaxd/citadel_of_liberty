@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UniRx;
@@ -32,20 +33,15 @@ public class HandController : MonoBehaviour
     }
 
     //ScriptableObjectではStartCoroutineが使えないのでラッパーメソッド
-    public void StartDiscard()
-    {
-        StartCoroutine(DiscardCoroutine());
-    }
-
-    public IEnumerator DiscardCoroutine()
+    //UnitaskならSOでも使える
+    public async UniTask StartDiscard()
     {
         //コスト分のカードが捨てられるまで
-        yield return new WaitUntil(()=>this.discardCounter==cardToBuild.model.discardsToBuild.Value);
+        await UniTask.WaitUntil(()=>this.discardCounter==cardToBuild.model.discardsToBuild.Value);
 
         this.cardToBuild = null;
         this.discardCounter = 0;
         GameManager.Instance.isDiscarding = false;
-
     }
 
     public void Build(CardController card)//手札から建設したとき、ボード側から呼び出される

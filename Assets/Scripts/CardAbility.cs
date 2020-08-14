@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cysharp.Threading.Tasks;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ public class CardAbility : MonoBehaviour
         this.playCardEffect = data.playCardEffect;
     }
 
-    public bool Activate(CardController card, PlayerEntity player, BoardEntity board)
+    public async UniTask<bool> Activate(CardController card, PlayerEntity player, BoardEntity board)
     {
         //manaが足りているかチェック
         //もしくはキャンセル処理を可能にする
@@ -41,7 +42,7 @@ public class CardAbility : MonoBehaviour
         board.mana.model.blueMana.Value -= card.model.blueToActivate.Value;
         board.mana.model.redMana.Value -= card.model.redToActivate.Value;
 
-        StartCoroutine(this.activateCardEffect.Activate(card, player, board));
+        await this.activateCardEffect.Activate(card, player, board);
 
         return true;
 

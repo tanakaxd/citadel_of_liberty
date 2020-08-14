@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cysharp.Threading.Tasks;
+using System.Collections;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class CardBuildingController : CardController
         base.Start();
 
         //TODO
-        this.view.activateButton.OnClickAsObservable().Subscribe(_ => ability.Activate(this, player, board));
+        this.view.activateButton.OnClickAsObservable().Subscribe(_ => ability.Activate(this, player, board).Forget());
 
         //もともとDataを持っていたら。フィールド初期配置用
         if (data != null)

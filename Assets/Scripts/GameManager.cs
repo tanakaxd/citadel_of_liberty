@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using Cysharp.Threading.Tasks;
+using UnityEngine.UI;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
@@ -20,6 +22,7 @@ public TopPanelController TopPanelController { get; private set; }
 */
 
     public GameModel gameModel;
+    public Button endTurnButton;
 
     private BoardEntity board;
     private PlayerEntity player;
@@ -40,47 +43,45 @@ public TopPanelController TopPanelController { get; private set; }
     void Start()
     {
         Debug.Log("GM start");
-        StartCoroutine(BeginTurn());
+        endTurnButton.OnClickAsObservable()
+            .Subscribe(_ => EndTurn().Forget());
+        BeginTurn().Forget();
     }
 
-    public IEnumerator BeginTurn()
+    public async UniTask BeginTurn()
     {
-        Debug.Log("Coroutine start");
-        yield return null;
-        Debug.Log("Coroutine frame after");
+        //Debug.Log("Coroutine start");
+        await UniTask.Yield();
+        //Debug.Log("Coroutine frame after");
 
 
         //建物のパッシブ
         GenerateSpell();
 
-        yield return new WaitForSeconds(1);
+        //Debug.Log("Unitask Delay Before");
+        await UniTask.Delay(1000);
+        //Debug.Log("Unitask Delay After");
 
         //ドロー
         Draw();
     }
 
-    public void StartEndTurn()
-    {
-        StartCoroutine(EndTurnCoroutine());
-    }
-
-    public IEnumerator EndTurnCoroutine()
+    public async UniTask EndTurn()
     {
         //食料消費
         gameModel.food.Value -= gameModel.population.Count;
-        yield return new WaitForSeconds(1);
+        await UniTask.Delay(1000);
 
         //金銭消費
         //gameModel.money.Value-=
-        yield return new WaitForSeconds(1);
+        await UniTask.Delay(1000);
 
         //手札を捨てる
         player.hands.DiscardAll();
-        yield return new WaitForSeconds(1);
+        await UniTask.Delay(1000);
 
         //次のターン開始
-        StartCoroutine(BeginTurn());
-
+        BeginTurn().Forget();
     }
 
     public void GenerateSpell()

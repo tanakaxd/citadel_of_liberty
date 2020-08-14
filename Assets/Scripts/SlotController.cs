@@ -46,7 +46,7 @@ public class SlotController : MonoBehaviour
             hand.Build(building);
             GameManager.Instance.isBuilding = false;
             Debug.Log("GetBuilding: " + this.building);
-            Debug.Log("Handcount: " + hand.model.cards.Count);
+            //Debug.Log("Handcount: " + hand.model.cards.Count);
 
         }
     }
@@ -55,7 +55,7 @@ public class SlotController : MonoBehaviour
     private void GetBuilding()//初期化用
     {
         this.building = transform.GetComponentInChildren<CardBuildingController>();
-        Debug.Log("GetBuilding: " + this.building);
+        //Debug.Log("GetBuilding: " + this.building);
     }
 
     public void DemolishBuilding()

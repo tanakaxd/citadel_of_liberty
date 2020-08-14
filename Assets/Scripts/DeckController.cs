@@ -60,7 +60,6 @@ public class DeckController : MonoBehaviour
         {
             if (model.cards.Count <= 0)
             {
-                //TODO refresh
                 if (trash.model.cards.Count <= 0) return;
                 foreach (var c in trash.model.cards)
                 {

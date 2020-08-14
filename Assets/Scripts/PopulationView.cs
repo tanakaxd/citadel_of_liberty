@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Citizen : MonoBehaviour
+public class PopulationView : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

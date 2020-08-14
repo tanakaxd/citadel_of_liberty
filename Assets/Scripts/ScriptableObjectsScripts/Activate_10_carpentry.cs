@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Cysharp.Threading.Tasks;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class Activate_10_carpentry : ActivateCardEffect
 
 
 
-    public override IEnumerator Activate(CardController card, PlayerEntity player, BoardEntity board)
+    public override async UniTask Activate(CardController card, PlayerEntity player, BoardEntity board)
     {
         GameManager.Instance.isChoicePrompting = true;
 
@@ -19,16 +20,16 @@ public class Activate_10_carpentry : ActivateCardEffect
 
         //建築完了まで待つ
         //Slotcontrollerが確認
-        yield return new WaitUntil(()=>!GameManager.Instance.isBuilding);
+        await UniTask.WaitUntil(()=>!GameManager.Instance.isBuilding);
 
         //コスト分カードを捨てる
         Debug.Log("手札を捨ててください");
         GameManager.Instance.isDiscarding = true;
 
-        player.hands.StartDiscard();
+        await player.hands.StartDiscard();
 
         //Trashcontrollerが確認
-        yield return new WaitUntil(() => !GameManager.Instance.isDiscarding);
+        await UniTask.WaitUntil(() => !GameManager.Instance.isDiscarding);
 
 
         Debug.Log("Activate_10_carpentry done");

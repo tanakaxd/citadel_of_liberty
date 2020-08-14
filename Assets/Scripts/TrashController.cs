@@ -29,8 +29,6 @@ public class TrashController : MonoBehaviour
                 CardMovement card = e.pointerDrag.GetComponent<CardMovement>();
                 if (card != null)
                 {
-                    //TODO この処理をhand側で行う？　例えばDiscardメソッドで
-                    //hand.Discard(card,this)
                     card.parentAfterDrag = this.transform;
                     card.positionAfterDrag = this.transform.position + hiddenOffset;
                     CardController discardedCard = card.GetComponent<CardController>();

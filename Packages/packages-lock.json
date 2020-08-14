@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "b64f31eb0ba5490e70918d0a4f41b94e13d564a1"
+    },
     "com.unity.2d.animation": {
       "version": "3.2.3",
       "depth": 0,

@@ -1,10 +1,11 @@
-﻿using System.Collections;
+﻿using Cysharp.Threading.Tasks;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(menuName = "ActivateCardEffect_0_potato_field")]
 public class Activate_0_potato_field : ActivateCardEffect
 {
-    public override IEnumerator Activate(CardController card, PlayerEntity player, BoardEntity board)
+    public override UniTask Activate(CardController card, PlayerEntity player, BoardEntity board)
     {
         //コスト消費
         //TODO consume anything to activate
@@ -16,7 +17,8 @@ public class Activate_0_potato_field : ActivateCardEffect
 
         Debug.Log("ActivateCardEffect_0_potato_field success");
 
-        yield break;
+        //TODO ?
+        return UniTask.Never(new System.Threading.CancellationToken());
     }
 
 }

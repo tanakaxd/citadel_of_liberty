@@ -10,7 +10,7 @@ public class GameModel : MonoBehaviour
     public int initialMoney = 5;
     public int initialDraw = 5;
 
-    public ReactiveCollection<Citizen> population = new ReactiveCollection<Citizen>();
+    public ReactiveCollection<CitizenController> population = new ReactiveCollection<CitizenController>();
 
     public IntReactiveProperty currentTurn;
     public IntReactiveProperty food;
