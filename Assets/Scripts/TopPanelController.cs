@@ -12,6 +12,7 @@ public class TopPanelController : MonoBehaviour
     void Start()
     {
         GameManager.getReactiveFood().DistinctUntilChanged().SubscribeToText(TopPanelFoodView.foodText);
+        GameManager.Instance.gameModel.foodToGrow.DistinctUntilChanged().SubscribeToText(TopPanelFoodView.foodToGrow);
         GameManager.getReactiveMoney().DistinctUntilChanged().SubscribeToText(TopPanelMoneyView.moneyText);
         //GameManager.getReactiveTurn().DistinctUntilChanged().SubscribeToText(TopPanelTurnView.turnText);
     }

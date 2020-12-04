@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopulationView : MonoBehaviour
+public class CitizenModel : MonoBehaviour
 {
 
 }

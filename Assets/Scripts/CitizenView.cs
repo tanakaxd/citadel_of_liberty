@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TopPanelFoodView : MonoBehaviour
+public class CitizenView : MonoBehaviour
 {
-    public Text foodText;
-    public Text foodToGrow;
+    public Text text;
 
 }

@@ -46,6 +46,15 @@ public TopPanelController TopPanelController { get; private set; }
         endTurnButton.OnClickAsObservable()
             .Subscribe(_ => EndTurn().Forget());
         BeginTurn().Forget();
+
+        board.population.model.citizens
+            .ObserveCountChanged()
+            //.DistinctUntilChanged()
+            //.DoOnSubscribe(() => gameModel.foodToGrow.Value = gameModel.initialPopulation * 2)
+            //subscribeする前にgameModel.foodToGrow.Valueが初期化されるので初期値をviewに反映できない
+            //ここではDoOnSubscribeで対処したが、本来なら統一的な解決法で一貫させたい
+            //一フレーム後に行うLateStartというAsyncなメソッドを作ってみた
+            .Subscribe(count => gameModel.foodToGrow.Value = count * 2);//TODO magic number
     }
 
     public async UniTask BeginTurn()
